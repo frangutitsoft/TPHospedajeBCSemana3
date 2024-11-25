@@ -55,4 +55,26 @@ protected int capacidad;
     public void setCapacidad(int capacidad) {
         this.capacidad = capacidad;
     }
+
+    public int subtotal() {
+        return CantidadNoches * valorBaseNoche;
+    }
+
+    public int bonoDescuento() {
+        // Obtiene el subtotal utilizando el método de la clase padre
+        int subtotal = subtotal();
+        // Verifica las condiciones
+        if (TipoTemporada == "Baja") {
+            // Calcula y devuelve el 25% del subtotal si es temporada baja
+            return (int) (subtotal * 0.25);
+        }
+        if (TipoTemporada == "Media") {
+            // Calcula y devuelve el 12,5% del subtotal si es temporada media
+            return (int) (subtotal * 0.125);
+        }
+        // Si las condiciones no se cumplen, el adicional es 0
+        return 0;
+    }
+
+
 }
